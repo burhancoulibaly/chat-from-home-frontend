@@ -1,0 +1,102 @@
+.loginBoxBackground {
+    height: 100%;
+    background: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginBox {
+    height: 60%;
+    width: 50%;
+    background: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.loginBox .leftSide {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.loginBox .leftSide > h1 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 70px;
+}
+
+.loginBox .leftSide .error {
+    border-color: pink;
+    box-shadow: 0 0 0 0.2rem pink !important; 
+}
+
+.loginBox .leftSide .errors-container {
+    position: absolute;
+    bottom: 0;
+    padding:  0 6rem 5rem 6rem;
+    width: 100%;
+}
+
+.loginBox .leftSide .errors-container .error-text{
+    color: red;
+}
+
+#login {
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5rem;
+    width: 100%;
+}
+
+#login .form-group {
+    width: 60%;
+}
+
+#login .form-group:nth-child(2) {
+    margin-top:.5rem
+}
+
+#login input {
+    width: 100%;
+    margin: .5rem 0 .5rem 0;
+}
+
+#login > button {
+    margin-top: 1rem;
+}
+
+.loginBox .signup-link {
+    position: absolute;
+    bottom: 0;
+}
+
+.loginBox .login-link {
+    position: absolute;
+    bottom: 0;
+}
+
+.loginBox .rightSide {
+    width: 60%;
+    height: 100%;
+    background-color: gray;
+    overflow: hidden;
+    position: relative;
+}
+
+.loginBox .rightSide img {
+    transform: scale(1);
+}
+
+
+
+

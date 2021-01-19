@@ -1,0 +1,100 @@
+.signupBoxBackground {
+    height: 100%;
+    background: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signupBox {
+    height: 80%;
+    width: 50%;
+    background: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.signupBox .leftSide {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.signupBox .leftSide > h1 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 70px;
+}
+
+.signupBox .leftSide .error {
+    border-color: pink;
+    box-shadow: 0 0 0 0.2rem pink !important; 
+}
+
+.signupBox .leftSide .errors-container {
+    position: absolute;
+    bottom: 0;
+    padding:  0 6rem 3rem 6rem;
+    width: 100%;
+}
+
+.signupBox .leftSide .errors-container .error-text{
+    color: red;
+}
+
+#signup {
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 3rem 0 0 0;
+}
+
+#signup .form-group {
+    width: 60%;
+}
+
+#signup .form-group:nth-child(2) {
+    margin-top:.5rem
+}
+
+#signup input {
+    width: 100%;
+    /* margin: .5rem 0 .5rem 0; */
+}
+
+#signup > button {
+    margin-top: 1rem;
+}
+
+.signupBox .login-link {
+    position: absolute;
+    bottom: 0;
+}
+
+.signupBox .signup-link {
+    position: absolute;
+    bottom: 0;
+}
+
+.signupBox .rightSide {
+    width: 60%;
+    height: 100%;
+    background-color: gray;
+    overflow: hidden;
+    position: relative;
+}
+
+.signupBox .rightSide img {
+    transform: scale(1);
+}
+
+

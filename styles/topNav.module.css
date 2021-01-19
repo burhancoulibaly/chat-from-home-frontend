@@ -1,0 +1,91 @@
+#top-nav {
+    height: 50px;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(53, 53, 53);
+    color: white;
+    position: relative;
+    z-index: 2;
+    padding: 0 1rem;
+}
+
+#top-nav h5, #top-nav h6 {
+    margin: 0;
+}
+
+#top-nav .nav-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#top-nav .nav-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 .50rem 0 0;
+}
+
+#top-nav .nav-links a,
+#top-nav .nav-links a:link,
+#top-nav .nav-links a:visited,
+#top-nav .nav-links a:hover,
+#top-nav .nav-links a:active {
+    text-decoration: none;
+    color: white;
+}
+
+#top-nav .nav-links a.btn,
+#top-nav .nav-links a.btn:link,
+#top-nav .nav-links a.btn:visited,
+#top-nav .nav-links a.btn:hover,
+#top-nav .nav-links a.btn:active {
+    box-shadow: none;
+}
+
+#top-nav button {
+    font-size: 1rem;
+    margin: 0 .125rem 0 .125rem;
+}
+
+#top-nav button:first-child {
+    margin: 0 .125rem 0 0;
+}
+
+#top-nav button:last-child {
+    margin: 0 0 0 .125rem;
+}
+
+#top-nav .nav-links button {
+    padding: 0;
+}
+
+#top-nav button,
+#top-nav #dropdown-basic-button,
+#top-nav #dropdown-basic-button:hover,
+#top-nav #dropdown-basic-button:active,
+#top-nav #dropdown-basic-button:focus {
+    background: rgb(53, 53, 53) !important;
+    border-color: rgb(53, 53, 53) !important;
+    border-style: none !important;
+    box-shadow: 0 0 0 0.2rem rgb(53, 53, 53) !important;
+}
+
+#top-nav button:hover,
+#top-nav #dropdown-basic-button:hover {
+    background: rgb(24, 24, 24) !important;
+}
+
+#top-nav .top-nav-button.active {
+    background: rgb(24, 24, 24) !important;
+}
+
+#top-nav .dropdown .dropdown-menu.show .top-nav-button.active {
+    background: #aaa !important;
+}
+
+
+
