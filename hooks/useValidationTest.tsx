@@ -64,7 +64,7 @@ const useValidationProvider = () => {
     }
 
     if(!validatePassword(password1) || !password1){
-      errors.password = "Password must contain atleast 1 uppercase letter, 1 lowercase letter, and 8 characters";
+      errors.password = "Password must contain atleast 1 uppercase letter, 1 lowercase letter, 1 number, and be 8 characters";
 
       isValid = false;
     }
@@ -93,8 +93,8 @@ const useValidationProvider = () => {
       confirm: null
     }
 
-    if(!password1){
-      errors.password = "Please enter a valid password"
+    if(!validatePassword(password1) || !password1){
+      errors.password = "Password must contain atleast 1 uppercase letter, 1 lowercase letter, 1 number, and be 8 characters";
 
       isValid = false;
     }

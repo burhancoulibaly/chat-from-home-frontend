@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 4000",
+    "dev": "nodemon",
     "build": "next build",
     "start": "next start",
     "test": "firebase emulators:exec --project chat-from-home --only firestore 'jest'"
@@ -22,7 +22,8 @@
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.14.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "react-switch": "^6.0.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^7.29.1",

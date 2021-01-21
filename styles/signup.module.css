@@ -15,6 +15,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    border-radius: 15px;
 }
 
 .signupBox .leftSide {
@@ -91,6 +92,8 @@
     background-color: gray;
     overflow: hidden;
     position: relative;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .signupBox .rightSide img {

@@ -36,6 +36,17 @@ export default function Login() {
         })
     }
 
+    useEffect(() => {
+        validate.setFormErrors({
+            ...validate.formErrors,
+            username: null, 
+            email: null, 
+            password: null, 
+            confirm: null, 
+            response: null
+        })
+    }, [router.pathname])
+
     // <--------------------------------Login--------------------------------> 
     useEffect(() => { 
         if(loginError){
@@ -71,7 +82,7 @@ export default function Login() {
         }
         { (auth.user !== 'loading' && (!auth.user || !Object.values(auth.user).length))  &&
             <div className="loginBoxBackground">
-                <Image src="/images/vadim-sherbakov-RcdV8rnXSeE-unsplash(1).jpg" unoptimized={false} alt="Login/Signup page background image" layout="fill" objectFit="cover"/>
+                <Image src="/images/luke-chesser-B_oL3jEt5L4-unsplash.jpg" unoptimized={false} alt="Login/Signup page background image" layout="fill" objectFit="cover"/>
                 
                 <div className="loginBox">
                     <div className="leftSide">

@@ -30,13 +30,6 @@ export default function TopNav() {
                             </a>
                         </Link>
                     </button>
-                    <button className={`btn btn-primary top-nav-button ${router.pathname === "/search" ? "active" : ""}`}>
-                        <Link href="/search">
-                            <a className="btn" href="#">
-                                Search
-                            </a>
-                        </Link>
-                    </button>
                     </div>
                     { (!auth || !auth.user) &&
                         <>

@@ -74,6 +74,17 @@ export default function PasswordReset() {
         }
     }
 
+    useEffect(() => {
+        validate.setFormErrors({
+            ...validate.formErrors,
+            username: null, 
+            email: null, 
+            password: null, 
+            confirm: null, 
+            response: null
+        })
+    }, [router.pathname])
+
     // <--------------------------------Password-Reset--------------------------------> 
     useEffect(() => { 
         if(passwordResetError){
@@ -105,7 +116,7 @@ export default function PasswordReset() {
         }
         { (auth.user !== 'loading' && (auth.user || Object.values(auth.user).length)) &&
             <div className="passwordResetBoxBackground">
-                <Image src="/images/vadim-sherbakov-RcdV8rnXSeE-unsplash(1).jpg" unoptimized={false} alt="Password Reset page background image" layout="fill" objectFit="cover"/>
+                <Image src="/images/luke-chesser-B_oL3jEt5L4-unsplash.jpg" unoptimized={false} alt="Password Reset page background image" layout="fill" objectFit="cover"/>
                 
                 <div className="passwordResetBox">
                     <h1 role="title">Reset Password</h1>

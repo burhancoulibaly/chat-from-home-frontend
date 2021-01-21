@@ -6,10 +6,11 @@ import TopNav from '../components/topNav'
 import { ApolloProvider } from "@apollo/client";
 import { useApollo } from "../lib/apolloClient";
 import { AuthProvider } from '../hooks/useAuth';
-import { ValidationProvider } from '../hooks/useValidationTest';
+import { useValidation, ValidationProvider } from '../hooks/useValidationTest';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  
   const apolloClient = useApollo(pageProps.initialApolloState);
 
   return ( 

@@ -7,7 +7,7 @@ const authContext = createContext({ user: {}, userInfo: null, getIdToken: null, 
 const { Provider } = authContext;
 
 export function AuthProvider(props: { children: ReactNode, authProvider: any }): JSX.Element {
-    const providedAuth:any = props.authProvider ? props.authProvider : useAuthProvider
+    const providedAuth:any = props.authProvider ? props.authProvider : useAuthProvider();
 
     return <Provider value={providedAuth}>{props.children}</Provider>;
 }

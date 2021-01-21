@@ -1,0 +1,141 @@
+#account{
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#account .container{
+    position: relative;
+    z-index: 1;
+    height: 900px;
+    display: flex;
+    justify-content: center;
+}
+
+#account .account-name-container{
+    position: relative;
+    /* border: 1px solid black; */
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #101d2e;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+#account .side-menu{
+    /* border: 1px solid red; */
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    width: 30%;
+}
+
+#account .side-menu .top{
+    /* border: 1px solid red; */
+    height: 40%;
+    width: 100%;
+    color: white;
+}
+
+#account .side-menu .top .user-info{
+    height: 70%;
+    /* border: 1px solid tan; */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#account .side-menu .top .user-info .profile-image{
+    height: 85%;
+    width: 65%;
+    /* border: 1px solid aliceblue; */
+    background: gray;
+    border-radius: 50%;
+}
+
+#account .side-menu .top .user-info .username{
+    margin-left: 1rem;
+    margin-bottom: 3rem;
+}
+
+#account .side-menu .top .presence{
+    height: 30%;
+    /* border: 1px solid violet; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 3rem;
+}
+
+#account .side-menu .top .presence h6{
+    margin: 0 0 0 0;
+}
+
+#account .side-menu .top .presence h6:first-child{
+    margin: 0 0 .5rem 0;
+}
+
+
+#account .side-menu .menu-buttons{
+    /* border: 1px solid green; */
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#account .side-menu .menu-buttons .menu-btn{
+    width: 100%;
+    height: 13%;
+    padding: 0 1.5rem 0 0;
+    color: #ddd;
+}
+
+#account .side-menu .menu-buttons .menu-btn.active,
+#account .side-menu .menu-buttons .menu-btn:hover{
+    background: #203958;
+}
+
+#account .side-menu .menu-buttons .menu-btn button{
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border: inherit;
+    color: #ddd;
+    padding: 0;
+}
+
+#account .side-menu .menu-buttons .menu-btn button:focus,
+#account .side-menu .menu-buttons .menu-btn button::-moz-focus-inner{
+    border: none;
+    outline: none !important;
+}
+
+#account .side-menu .menu-buttons .menu-btn h5{
+    height: 100%;
+    margin: 0;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: .010px solid #203958;
+}
+
+#account .side-menu .menu-buttons .menu-btn:last-child h5{
+    border-bottom: none;
+}
+
+#account .content{
+    /* border: 1px solid purple; */
+    border-radius: 15px;
+    width: 70%;
+    background-color: #203958;
+}
