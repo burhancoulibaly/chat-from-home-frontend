@@ -7,13 +7,16 @@ import LoginForm from "../components/loginForm";
 import { useAuthGuard } from "../hooks/useAuthGuard";
 import { validateUsername, validateEmail, validatePassword, confirmPassword } from "../lib/formValidator";
 import { MockedProvider } from "@apollo/client/testing";
+import { ValidationProvider } from "../hooks/useValidationTest";
 
-const formErrors = {
-  username: null,
-  email: null,
-  password: null,
-  confirm: null
-}
+const formErrors = () => {
+  return {
+    username: null,
+    email: null,
+    password: null,
+    confirm: null
+  }
+} 
 
 const validateLoginForm = (username: string, password: string) => {
   let isValid: boolean = true;
@@ -42,7 +45,9 @@ describe("Login", () => {
     const { queryByRole } = render(
       <MockedProvider>
         <MockRouter path="/login">
-          <Login/>
+          <ValidationProvider>
+            <Login/>
+          </ValidationProvider>
         </MockRouter>
       </MockedProvider>
     )

@@ -7,6 +7,7 @@ import MockRouter from "../lib/mockRouter";
 import PasswordReset from "../pages/passwordreset";
 import { confirmPassword } from "../lib/formValidator";
 import PasswordResetForm from "../components/passwordResetForm";
+import { ValidationProvider } from "../hooks/useValidationTest";
 
 const formErrors = {
     password: null,
@@ -64,7 +65,9 @@ describe("Password Reset", () => {
             <MockedProvider>
                 <AuthProvider authProvider={ authProvider }>
                     <MockRouter path="/login">
-                        <PasswordReset/>
+                        <ValidationProvider>
+                            <PasswordReset/>
+                        </ValidationProvider>
                     </MockRouter>
                 </AuthProvider>
             </MockedProvider>

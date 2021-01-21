@@ -7,6 +7,7 @@ import { validateUsername, validateEmail, validatePassword, confirmPassword } fr
 import SignupForm from "../components/signupForm";
 import Signup from "../pages/signup";
 import { MockedProvider } from '@apollo/client/testing';
+import { ValidationProvider } from "../hooks/useValidationTest";
 
 const formErrors = {
   username: null,
@@ -57,7 +58,9 @@ describe("Signup", () => {
         const { queryByRole } = render(
             <MockedProvider>
                 <MockRouter path="/signup">
-                    <Signup/>
+                    <ValidationProvider>
+                      <Signup/>
+                    </ValidationProvider>
                 </MockRouter>
             </MockedProvider>
         )
