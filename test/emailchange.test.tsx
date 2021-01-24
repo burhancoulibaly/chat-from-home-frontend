@@ -4,14 +4,15 @@ import '@testing-library/jest-dom/extend-expect'
 import React, { ReactNode } from "react";
 import { AuthProvider, useAuth } from "../hooks/useAuth";
 import MockRouter from "../lib/mockRouter";
-import PasswordReset from "../pages/passwordreset";
-import { confirmPassword, validatePassword } from "../lib/formValidator";
-import PasswordResetForm from "../components/passwordResetForm";
+import EmailChange from "../pages/emailchange";
+import { confirmEmail,  validateEmail } from "../lib/formValidator";
+import EmailChangeForm from "../components/emailChangeForm";
 import { ValidationProvider } from "../hooks/useValidationTest";
 
 const formErrors = {
-    password: null,
-    confirm: null
+    email: null,
+    confirm: null,
+    response: null
 }
 
 const user = {
@@ -32,23 +33,24 @@ const authProvider = {
     signout: null  
 }
 
-const validateFormPasswordReset = (password1: string, password2: string) => {
+const validateFormEmailChange = (email1: string, email2: string) => {
     let isValid: boolean = true;
+
     const errors = {
-        password: null,
-        confirm: null
+      email: null,
+      confirm: null
     }
-  
-    if(!validatePassword(password1) || !password1){
-        errors.password = "Please enter a valid password"
-    
-        isValid = false;
+
+    if(!validateEmail(email1) || !email1){
+      errors.email = "Please enter a valid email";
+
+      isValid = false;
     }
-  
-    if(!confirmPassword(password1, password2) || !password1 || !password2){
-        errors.confirm = "Passwords must match";
-    
-        isValid = false;
+
+    if(!confirmEmail(email1, email2) || !email1 || !email2){
+      errors.confirm = "Emails must match";
+
+      isValid = false;
     }
   
     return isValid;
@@ -59,21 +61,21 @@ beforeAll(() => {
 })
 
 
-describe("Password Reset", () => {
-    it('testing things', () => {
+describe("Email Change", () => {
+    it('Testing email change page', () => {
         const { queryByRole } = render(
             <MockedProvider>
                 <AuthProvider authProvider={ authProvider }>
                     <MockRouter path="/login">
                         <ValidationProvider>
-                            <PasswordReset/>
+                            <EmailChange/>
                         </ValidationProvider>
                     </MockRouter>
                 </AuthProvider>
             </MockedProvider>
         )
 
-        expect(queryByRole('title')).toHaveTextContent('Reset Password');
+        expect(queryByRole('title')).toHaveTextContent('Change Email');
     });
 });
 
@@ -83,7 +85,7 @@ describe("Login form validation", () => {
         let submitData = null;
     
             const handleSubmit = jest.fn((e) => {
-                isValid = validateFormPasswordReset(e.target[0].value, e.target[1].value);
+                isValid = validateFormEmailChange(e.target[0].value, e.target[1].value);
 
                 if(isValid){
                     submitData = e.target;
@@ -96,7 +98,7 @@ describe("Login form validation", () => {
             <MockedProvider>
                 <AuthProvider authProvider={ authProvider }>
                     <MockRouter path="/login">
-                        <PasswordResetForm
+                        <EmailChangeForm
                             onSubmit={handleSubmit}
                             formErrors={formErrors}
                         />
@@ -105,34 +107,34 @@ describe("Login form validation", () => {
             </MockedProvider>
         )
     
-        const passwordInput: any  = getByLabelText("New Password");
-        const confirmPasswordInput: any  = getByLabelText("Confirm Password");
-        const resetPasswordButton: any  = getByTitle("passwordReset");
+        const emailInput: any  = getByLabelText("New Email");
+        const confirmEmailInput: any  = getByLabelText("Confirm Email");
+        const changeEmailButton: any  = getByTitle("changeEmail");
         
-        expect(passwordInput);
-        expect(confirmPasswordInput);
-        expect(resetPasswordButton);
+        expect(emailInput);
+        expect(confirmEmailInput);
+        expect(changeEmailButton);
     
-        passwordInput.value = 'Password123';
-        confirmPasswordInput.value = 'Password123';
+        emailInput.value = 'test_email@gmail.com';
+        confirmEmailInput.value = 'test_email@gmail.com';
 
-        fireEvent.change(passwordInput);
-        expect(passwordInput.value).toBe('Password123')
+        fireEvent.change(emailInput);
+        expect(emailInput.value).toBe('test_email@gmail.com')
     
-        fireEvent.change(confirmPasswordInput);
-        expect(confirmPasswordInput.value).toBe('Password123')
+        fireEvent.change(confirmEmailInput);
+        expect(confirmEmailInput.value).toBe('test_email@gmail.com')
     
         const submit = getByTestId("form")
     
         const submitEvent = createEvent.submit(submit, {
-            target: [passwordInput, confirmPasswordInput]
+            target: [emailInput, confirmEmailInput]
         })
     
         fireEvent.submit(submit, submitEvent);
         
         expect(isValid).toEqual(true);
-        expect(submitData[0].value).toEqual(passwordInput.value);
-        expect(submitData[1].value).toEqual(confirmPasswordInput.value);
+        expect(submitData[0].value).toEqual(emailInput.value);
+        expect(submitData[1].value).toEqual(confirmEmailInput.value);
     })
 
     it("Doesn't submit if there are errors in form input", async() => {
@@ -140,7 +142,7 @@ describe("Login form validation", () => {
         let submitData = null;
     
             const handleSubmit = jest.fn((e) => {
-                isValid = validateFormPasswordReset(e.target[0].value, e.target[1].value);
+                isValid = validateFormEmailChange(e.target[0].value, e.target[1].value);
 
                 if(isValid){
                     submitData = e.target;
@@ -153,7 +155,7 @@ describe("Login form validation", () => {
             <MockedProvider>
                 <AuthProvider authProvider={ authProvider }>
                     <MockRouter path="/login">
-                        <PasswordResetForm
+                        <EmailChangeForm
                             onSubmit={handleSubmit}
                             formErrors={formErrors}
                         />
@@ -162,27 +164,27 @@ describe("Login form validation", () => {
             </MockedProvider>
         )
 
-        const passwordInput: any  = getByLabelText("New Password");
-        const confirmPasswordInput: any  = getByLabelText("Confirm Password");
-        const resetPasswordButton: any  = getByTitle("passwordReset");
+        const emailInput: any  = getByLabelText("New Email");
+        const confirmEmailInput: any  = getByLabelText("Confirm Email");
+        const changeEmailButton: any  = getByTitle("changeEmail");
 
-        expect(passwordInput);
-        expect(confirmPasswordInput);
-        expect(resetPasswordButton);
+        expect(emailInput);
+        expect(confirmEmailInput);
+        expect(changeEmailButton);
     
-        passwordInput.value = 'Password123';
-        confirmPasswordInput.value = 'Password456';
+        emailInput.value = 'test_email@gmail.com';
+        confirmEmailInput.value = 'test.email@gmail.com';
 
-        fireEvent.change(passwordInput);
-        expect(passwordInput.value).toBe('Password123')
+        fireEvent.change(emailInput);
+        expect(emailInput.value).toBe('test_email@gmail.com')
     
-        fireEvent.change(confirmPasswordInput);
-        expect(confirmPasswordInput.value).toBe('Password456')
+        fireEvent.change(confirmEmailInput);
+        expect(confirmEmailInput.value).toBe('test.email@gmail.com')
     
         const submit = getByTestId("form")
     
         const submitEvent = createEvent.submit(submit, {
-            target: [passwordInput, confirmPasswordInput]
+            target: [emailInput, confirmEmailInput]
         })
     
         fireEvent.submit(submit, submitEvent);
@@ -190,56 +192,57 @@ describe("Login form validation", () => {
         expect(isValid).toEqual(false);
         expect(submitData).toEqual(null);
 
-        passwordInput.value = 'Password';
-        confirmPasswordInput.value = 'Password';
+        emailInput.value = 'test_email@g';
+        confirmEmailInput.value = 'test_email@g';
 
-        fireEvent.change(passwordInput);
-        expect(passwordInput.value).toBe('Password')
+        fireEvent.change(emailInput);
+        expect(emailInput.value).toBe('test_email@g')
     
-        fireEvent.change(confirmPasswordInput);
-        expect(confirmPasswordInput.value).toBe('Password')
+        fireEvent.change(confirmEmailInput);
+        expect(confirmEmailInput.value).toBe('test_email@g')
 
         fireEvent.submit(submit, submitEvent);
 
         expect(isValid).toEqual(false);
         expect(submitData).toEqual(null);
 
-        passwordInput.value = '';
-        confirmPasswordInput.value = 'Password456';
 
-        fireEvent.change(passwordInput);
-        expect(passwordInput.value).toBe('')
+        emailInput.value = '';
+        confirmEmailInput.value = 'test.email@gmail.com';
+
+        fireEvent.change(emailInput);
+        expect(emailInput.value).toBe('')
     
-        fireEvent.change(confirmPasswordInput);
-        expect(confirmPasswordInput.value).toBe('Password456')
+        fireEvent.change(confirmEmailInput);
+        expect(confirmEmailInput.value).toBe('test.email@gmail.com')
 
         fireEvent.submit(submit, submitEvent);
 
         expect(isValid).toEqual(false);
         expect(submitData).toEqual(null);
 
-        passwordInput.value = 'Password123';
-        confirmPasswordInput.value = '';
+        emailInput.value = 'test_email@gmail.com';
+        confirmEmailInput.value = '';
 
-        fireEvent.change(passwordInput);
-        expect(passwordInput.value).toBe('Password123')
+        fireEvent.change(emailInput);
+        expect(emailInput.value).toBe('test_email@gmail.com')
     
-        fireEvent.change(confirmPasswordInput);
-        expect(confirmPasswordInput.value).toBe('')
+        fireEvent.change(confirmEmailInput);
+        expect(confirmEmailInput.value).toBe('')
 
         fireEvent.submit(submit, submitEvent);
 
         expect(isValid).toEqual(false);
         expect(submitData).toEqual(null);
 
-        passwordInput.value = '';
-        confirmPasswordInput.value = '';
+        emailInput.value = '';
+        confirmEmailInput.value = '';
 
-        fireEvent.change(passwordInput);
-        expect(passwordInput.value).toBe('')
+        fireEvent.change(emailInput);
+        expect(emailInput.value).toBe('')
     
-        fireEvent.change(confirmPasswordInput);
-        expect(confirmPasswordInput.value).toBe('')
+        fireEvent.change(confirmEmailInput);
+        expect(confirmEmailInput.value).toBe('')
 
         fireEvent.submit(submit, submitEvent);
 

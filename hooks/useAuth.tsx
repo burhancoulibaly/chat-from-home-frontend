@@ -18,7 +18,7 @@ const useAuthProvider = () => {
     // console.log(user)
     // console.log(user ? user.email : null);
 
-    useEffect(() => {                 
+    useEffect(() => {             
         const unsub = auth.onAuthStateChanged(handleAuthStateChanged);
 
         return async() => unsub();
@@ -67,6 +67,15 @@ const useAuthProvider = () => {
 
     const signInWithCustomToken = async(token) => {
         try {
+            if(user){
+                auth.updateCurrentUser(await (await auth.signInWithCustomToken(token)).user);
+
+                setUser(auth.currentUser);
+
+                //Will try to get useEffect to call this.
+                return handleAuthStateChanged(auth.currentUser);
+            }
+
             return setUser(await (await auth.signInWithCustomToken(token)).user)     
         } catch (error) {
             return error

@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { validateUsername, validateEmail, validatePassword, confirmPassword } from "../lib/formValidator";
+import { validateUsername, validateEmail, validatePassword, confirmEmail, confirmPassword } from "../lib/formValidator";
 
-const validationContext = createContext({ formErrors: {}, setFormErrors: null, validateLoginForm: null, validateFormSignUp: null, validateFormPasswordReset: null});
+const validationContext = createContext({ formErrors: {}, setFormErrors: null, validateLoginForm: null, validateFormSignUp: null, validateFormEmailChange: null, validateFormPasswordReset: null});
 const { Provider } = validationContext;
 
 export function ValidationProvider(props: { children: ReactNode }): JSX.Element {
@@ -86,6 +86,35 @@ const useValidationProvider = () => {
     return isValid;
   }
 
+  const validateFormEmailChange = (email1: string, email2: string) => {
+    let isValid: boolean = true;
+
+    const errors = {
+      email: null,
+      confirm: null
+    }
+
+    if(!validateEmail(email1) || !email1){
+      errors.email = "Please enter a valid email";
+
+      isValid = false;
+    }
+
+    if(!confirmEmail(email1, email2) || !email1 || !email2){
+      errors.confirm = "Emails must match";
+
+      isValid = false;
+    }
+
+    setFormErrors({
+      ...formErrors,
+      email: errors.email,
+      confirm: errors.confirm
+    })
+
+    return isValid;
+  }
+
   const validateFormPasswordReset = (password1: string, password2: string) => {
     let isValid: boolean = true;
     const errors = {
@@ -119,6 +148,7 @@ const useValidationProvider = () => {
     setFormErrors,
     validateLoginForm,
     validateFormSignUp,
+    validateFormEmailChange,
     validateFormPasswordReset
   }
 }

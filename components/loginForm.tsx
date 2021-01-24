@@ -27,7 +27,7 @@ export default function LoginForm({onSubmit, formErrors, ...props}) {
             <div className="errors-container">
                 {formErrors.username && <h6 className="error-text">{formErrors.username}</h6>}
                 {formErrors.password && <h6 className="error-text">{formErrors.password}</h6>}
-                {formErrors.response && <h6 className="error-text">{formErrors.response}</h6>}
+                {formErrors.response && <h6 className="response-text">{formErrors.response}</h6>}
             </div>
 
             <p className="signup-link">

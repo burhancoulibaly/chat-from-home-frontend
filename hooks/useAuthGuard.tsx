@@ -10,7 +10,7 @@ export const useAuthGuard = () => {
     useEffect(() => {
         if(!auth || !auth.user) {
             //Add processing here
-            if(router.pathname === '/passwordreset' || router.pathname === '/account'){
+            if(router.pathname === '/passwordreset' || router.pathname === '/account' || router.pathname === '/emailchange'){
                 router.push('/login')
             }
         }else if(auth.user !== "loading"){

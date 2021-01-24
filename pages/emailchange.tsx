@@ -1,45 +1,44 @@
 import Image from 'next/image';
-import '../styles/passwordreset.module.css';
-import PasswordResetForm from '../components/passwordResetForm';
+import '../styles/emailchange.module.css';
+import EmailChangeForm from '../components/emailChangeForm';
 import { useAuthGuard } from '../hooks/useAuthGuard';
 import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
-import { PASSWORDRESET } from '../graphql-queries/auth-queries';
-import { confirmPassword } from '../lib/formValidator';
+import { useEffect } from 'react';
+import { EMAILCHANGE } from '../graphql-queries/auth-queries';
 import { useValidation } from '../hooks/useValidationTest';
 
-export default function PasswordReset() {
+export default function EmailChange() {
     const auth = useAuthGuard();
     const router = useRouter();
     const validate = useValidation();
-    const [passwordReset, { error: passwordResetError, loading: passwordResetLoading, data: passwordResetData }] = useMutation(PASSWORDRESET);
+    const [emailChange, { error: emailChangeError, loading: emailChangeLoading, data: emailChangeData }] = useMutation(EMAILCHANGE);
 
     const handleSubmit = async(e) => {
         e.preventDefault();
 
         validate.setFormErrors({
-            password: null,
+            email: null,
             confirm: null,
             response: null
         })
 
         const token = auth ? await auth.getIdToken() : null;
         const email = auth ? auth.userInfo().email : null;
-        const password1 = e.target[0].value;
-        const password2 = e.target[1].value;
+        const email1 = e.target[0].value;
+        const email2 = e.target[1].value;
 
-        const isValid: boolean = validate.validateFormPasswordReset(password1, password2);
+        const isValid: boolean = validate.validateFormEmailChange(email1, email2);
         
         if(!isValid){
             return;
         }
 
-        passwordReset({
+        emailChange({
             variables: {
                 idToken: token,
-                email: email,
-                password: password1
+                email1: email,
+                email2: email1
             }
         })
 
@@ -60,31 +59,31 @@ export default function PasswordReset() {
         })
     }, [router.pathname])
 
-    // <--------------------------------Password-Reset--------------------------------> 
+    // <--------------------------------Email-Change--------------------------------> 
     useEffect(() => { 
-        if(passwordResetError){
-            console.log(passwordResetError)
+        if(emailChangeError){
+            console.log(emailChangeError)
         }
 
-        if(passwordResetData){
-            if(passwordResetData.passwordReset.status != "Error"){
-                auth.signInWithCustomToken(passwordResetData.passwordReset.accessToken);
+        if(emailChangeData){
+            if(emailChangeData.emailChange.status != "Error"){
+                auth.signInWithCustomToken(emailChangeData.emailChange.accessToken);
 
                 validate.setFormErrors({
                     ...validate.formErrors,
-                    response: passwordResetData.passwordReset.message
+                    response: emailChangeData.emailChange.message
                 })
             }else{
                 validate.setFormErrors({
                     ...validate.formErrors,
-                    response: passwordResetData.passwordReset.message
+                    response: emailChangeData.emailChange.message
                 })
 
-                console.log(passwordResetData.passwordReset)
+                console.log(emailChangeData.emailChange)
             }
         }
         
-    }, [passwordResetError, passwordResetData])
+    }, [emailChangeError, emailChangeData])
 
     return(
         <>
@@ -93,12 +92,10 @@ export default function PasswordReset() {
             </>
         }
         { (auth.user !== 'loading' && (auth.user)) &&
-            <div className="passwordResetBoxBackground">
-                <Image src="/images/luke-chesser-B_oL3jEt5L4-unsplash.jpg" unoptimized={false} alt="Password Reset page background image" layout="fill" objectFit="cover"/>
-                
-                <div className="passwordResetBox">
-                    <h1 role="title">Reset Password</h1>
-                    <PasswordResetForm
+            <div className="emailChangeBoxBackground">         
+                <div className="emailChangeBox">
+                    <h1 role="title">Change Email</h1>
+                    <EmailChangeForm
                         onSubmit={handleSubmit}
                         formErrors={validate.formErrors} 
                     />

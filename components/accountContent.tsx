@@ -4,8 +4,11 @@ import { useAuthGuard } from '../hooks/useAuthGuard';
 import { useState } from 'react';
 import React from 'react';
 import Room from './account-tabs/room';
+import Followers from './account-tabs/followers';
+import Following from './account-tabs/following';
+import Security from './account-tabs/security';
 
-export default function AccountContent({ accountTab, switchTab, ...page }){
+export default function AccountContent({ auth, accountTab, switchTab, ...page }){
     
     const setPassword = (e) => {
         e.preventDefault();
@@ -55,11 +58,6 @@ export default function AccountContent({ accountTab, switchTab, ...page }){
                                     <h5>Security</h5>
                                 </button> 
                             </div>
-                            <div className={`menu-btn logout ${accountTab.tab === "logout" ? "active" : ""}`}>
-                                <button onClick={(e) => switchTab(e)}>
-                                    <h5>Logout</h5>
-                                </button> 
-                            </div>
                         </div>
                     </div>
                     <div className="content">
@@ -73,22 +71,19 @@ export default function AccountContent({ accountTab, switchTab, ...page }){
                         }
                         {accountTab.tab === "followers" && 
                             <>
-                                <h1>Followers</h1>
+                                <Followers/>
                             </>
                         }
                         {accountTab.tab === "following" &&
                             <>
-                                <h1>Following</h1>
+                                <Following/>
                             </>
                         }
                         {accountTab.tab === "security" &&
                             <>
-                                <h1>Security</h1>
-                            </>
-                        }
-                        {accountTab.tab === "logout" &&
-                            <>
-                                <h1>Logout</h1>
+                                <Security
+                                    auth={auth}
+                                />
                             </>
                         }
                     </div>

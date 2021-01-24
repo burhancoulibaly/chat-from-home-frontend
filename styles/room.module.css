@@ -41,6 +41,7 @@
     border: 1px solid #101d2e;
     background-color: white;
     color: #101d2e;
+    padding: .25rem .5rem;
 }
 
 #room-tab .mods-n-banned .mods-list .mod:last-child{
@@ -74,6 +75,7 @@
     border: 1px solid #101d2e;
     background-color: white;
     color: #101d2e;
+    padding: .25rem .5rem;
 }
 
 #room-tab .mods-n-banned .banned-list .banned:last-child{

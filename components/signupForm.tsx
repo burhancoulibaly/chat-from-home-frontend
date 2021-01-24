@@ -29,7 +29,7 @@ export default function SignupForm({onSubmit, formErrors, ...props}) {
                 {formErrors.email && <h6 className="error-text">{formErrors.email}</h6>}
                 {formErrors.password && <h6 className="error-text">{formErrors.password}</h6>}
                 {formErrors.confirm && <h6 className="error-text">{formErrors.confirm}</h6>}
-                {formErrors.response && <h6 className="error-text">{formErrors.response}</h6>}
+                {formErrors.response && <h6 className="response-text">{formErrors.response}</h6>}
             </div>
 
             <p className="login-link">

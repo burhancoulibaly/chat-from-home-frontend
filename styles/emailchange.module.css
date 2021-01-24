@@ -1,0 +1,67 @@
+.emailChangeBoxBackground {
+    height: 100%;
+    background: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.emailChangeBox {
+    height: 60%;
+    width: 50%;
+    background: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    border-radius: 15px;
+}
+
+.emailChangeBox .error {
+    border-color: pink;
+    box-shadow: 0 0 0 0.2rem pink !important; 
+}
+
+.emailChangeBox .errors-container {
+    position: absolute;
+    bottom: 0;
+    padding:  0 27rem 3rem 27rem;
+    width: 100%;
+}
+
+.emailChangeBox .errors-container .error-text{
+    color: red;
+}
+
+#emailChange {
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 6rem;
+    width: 100%;
+}
+
+#emailChange .form-group {
+    width: 30%;
+}
+
+#emailChange .form-group:nth-child(2) {
+    margin-top:.5rem
+}
+
+#emailChange input {
+    width: 100%;
+    /* margin: .5rem 0 .5rem 0; */
+}
+
+#emailChange > button {
+    margin-top: 2rem;
+}
+
+.emailChangeBox .login-link {
+    position: absolute;
+    bottom: 0;
+}

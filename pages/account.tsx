@@ -66,6 +66,7 @@ export default function Account(){
                 <AccountContent
                     accountTab={accountTab}
                     switchTab={switchTab}
+                    auth={auth}
                 />
             }
         </>

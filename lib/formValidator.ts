@@ -20,6 +20,14 @@ export const validatePassword = (str: string) => {
     return passwordRegEx.test(str);
 }
 
+export const confirmEmail = (str1: string, str2: string) => {
+    if(str1 !== str2){
+        return false;
+    }
+
+    return true;
+}
+
 export const confirmPassword = (str1: string, str2: string) => {
     if(str1 !== str2){
         return false;
