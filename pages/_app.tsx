@@ -8,20 +8,26 @@ import { useApollo } from "../lib/apolloClient";
 import { AuthProvider } from '../hooks/useAuth';
 import { useValidation, ValidationProvider } from '../hooks/useValidationTest';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import Head from 'next/head';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
 
-  return ( 
-    <ApolloProvider client={apolloClient}>
-      <AuthProvider authProvider={null}>
-        <ValidationProvider>
-          <TopNav/>
-          <Component {...pageProps} />
-        </ValidationProvider>
-      </AuthProvider>  
-    </ApolloProvider>
+  return (
+    <>
+      <Head>
+        <script src="https://kit.fontawesome.com/79b0fa06bc.js" crossOrigin="anonymous"></script>
+      </Head>
+      <ApolloProvider client={apolloClient}>
+        <AuthProvider authProvider={null}>
+          <ValidationProvider>
+            <TopNav/>
+            <Component {...pageProps} />
+          </ValidationProvider>
+        </AuthProvider>  
+      </ApolloProvider>
+    </>
   );
 }
 

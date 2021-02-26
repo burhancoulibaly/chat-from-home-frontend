@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../../styles/room.module.css';
+import '../../styles/room_account.module.css';
 import Switch from "react-switch";
 
 export default function Room({ setPassword, clearPassword, ...props }){
