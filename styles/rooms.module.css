@@ -10,7 +10,7 @@
 }
 
 #rooms .room-heading{
-    border: 1px solid lightblue;
+    /* border: 1px solid lightblue; */
     width: 1275px;
     height: 300px;
     margin: 5rem 0 5rem 0;
@@ -18,6 +18,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#rooms .room-heading h1{
+    color: white;
 }
 
 #rooms .rooms-container{
@@ -45,3 +49,30 @@
     /* text-align: center; */
     color: white;
 }
+
+#rooms .room-options {
+    width: 50%;
+    display: flex;
+    margin-top: 5rem;
+}
+
+#rooms .room-options .input-group input {
+    height: 50px;
+}
+
+#rooms .room-options .input-group .filter{
+    width: 90px;
+    margin-left: 2rem;
+    color: black;
+    background: white;
+}
+
+#rooms .room-options .filter{
+    font-size: 24px;
+    line-height: unset;
+    width: 90px;
+    margin-left: 2rem;
+    color: black;
+    background: white;
+}
+
